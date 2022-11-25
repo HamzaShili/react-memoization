@@ -1,8 +1,8 @@
-import { memo, useMemo, useState } from 'react';
+import { memo, useCallback, useMemo, useState } from 'react';
 import './App.css';
 
 
-const Swatch = ({ params }) => {
+const Swatch = ({ params, onClick }) => {
   console.log(`Swatch rendered ${params.color}`)
   return (
     <div
@@ -25,6 +25,9 @@ function App() {
 
   const params = useMemo(() => ({ color }), [color])
 
+  const onClick = useCallback(() => { }, [],)
+
+
   return (
     <div className='App'>
       <div>
@@ -40,7 +43,7 @@ function App() {
         </button>
       </div>
       <div>
-        <SwatchMemo params={params} />
+        <SwatchMemo params={params} onClick={onClick} />
       </div>
     </div>
   );
